@@ -1,6 +1,6 @@
-about code-courses-app
+About code-courses-app
 ------------
-Code Courses is a React App developed with webpack.
+Code Courses is a practice React App developed from the ground up with webpack instead of create-react-app.
 
 Structure
 ---------
