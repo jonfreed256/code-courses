@@ -1,16 +1,25 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-export const Tag = ({ name, count, id, handleTagFilter }) => {
+const Tag = ({ name, count, id, handleTagFilter }) => {
   return (
     <div>
       <button
         onClick={e => handleTagFilter(e)}
-        className="tag-button"
+        className='tag-button'
         value={name}
-        id={id}
-      >
+        id={id}>
         {`${name} | ${count}`}
       </button>
     </div>
   );
 };
+
+Tag.propTypes = {
+  name: PropTypes.string,
+  count: PropTypes.number,
+  id: PropTypes.number,
+  handleTagFilter: PropTypes.func
+};
+
+export default Tag;

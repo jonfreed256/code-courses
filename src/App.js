@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import courses from "./courses";
-import CourseContainer from "./CourseContainer";
-import TagContainer from "./TagContainer";
+import React, { Component } from 'react';
+import courses from './courses';
+import CourseContainer from './CourseContainer';
+import TagContainer from './CourseTagContainer';
 
 export default class App extends Component {
   state = {
@@ -12,7 +12,7 @@ export default class App extends Component {
 
   componentDidMount() {
     fetch(
-      "https://s3.us-east-2.amazonaws.com/codecademy-interview/entities.json"
+      'https://s3.us-east-2.amazonaws.com/codecademy-interview/entities.json'
     )
       .then(response => response.json())
       .then(data => this.setState({ authors: Object.entries(data) }))
@@ -38,17 +38,19 @@ export default class App extends Component {
   };
 
   render() {
-    return (
-    !this.state.authors ?
-    <h1>Loading...</h1>
-    :
+    return !this.state.authors ? (
+      <h1>Loading...</h1>
+    ) : (
       <div>
         <div>
           <TagContainer
             courses={courses}
             handleTagFilter={this.handleTagFilter}
           />
-          <CourseContainer authors={this.state.authors} courses={this.state.courses} />
+          <CourseContainer
+            authors={this.state.authors}
+            courses={this.state.courses}
+          />
         </div>
       </div>
     );

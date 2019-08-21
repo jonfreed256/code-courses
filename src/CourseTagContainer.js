@@ -1,7 +1,8 @@
-import React from "react";
-import Tag from "./Tag";
+import React from 'react';
+import Tag from './Tag';
+import PropTypes from 'prop-types';
 
-export const TagContainer = ({ courses, handleTagFilter }) => {
+const TagContainer = ({ courses, handleTagFilter }) => {
   const courseTags = courses.map(courseObj => courseObj.tags).flat();
   const tagsObj = {};
   courseTags.forEach(element => {
@@ -14,7 +15,7 @@ export const TagContainer = ({ courses, handleTagFilter }) => {
   const tagArrs = Object.entries(tagsObj);
 
   return (
-    <div className="tag-wrapper">
+    <div className='tag-wrapper'>
       {tagArrs.map(item => (
         <Tag
           name={item[0]}
@@ -27,3 +28,10 @@ export const TagContainer = ({ courses, handleTagFilter }) => {
     </div>
   );
 };
+
+TagContainer.propTypes = {
+  courses: PropTypes.object,
+  handleTagFilter: PropTypes.func
+};
+
+export default TagContainer;

@@ -1,29 +1,29 @@
-import React from "react";
-import Course from "./Course";
+import React from 'react';
+import Course from './CourseCard';
+import PropTypes from 'prop-types';
 
-export const Results = ({ courses, authors }) => {
-
+const CourseContainer = ({ courses, authors }) => {
   function replaceCourseAuthIdWithName(coursesObj, authorsObj) {
     const newObj = [...coursesObj];
     const authorsArr = Object.entries([...authorsObj]);
-    const newAuthorsObj = Object.values(authorsArr[0][1][1])
+    const newAuthorsObj = Object.values(authorsArr[0][1][1]);
 
     newAuthorsObj.forEach(author => {
       newObj.map(course => {
-        if(+course.author_id === +author.id){
-          course.author_id = author.name
+        if (+course.author_id === +author.id) {
+          course.author_id = author.name;
         }
-        return course
+        return course;
       });
-    })
-    console.log(newObj)
+    });
+    console.log(newObj);
     return newObj;
   }
 
   const authorsList = replaceCourseAuthIdWithName(courses, authors);
 
   return (
-    <div className="card-wrapper">
+    <div className='card-wrapper'>
       {!courses.length ? (
         <h1>No courses found</h1>
       ) : (
@@ -40,3 +40,10 @@ export const Results = ({ courses, authors }) => {
     </div>
   );
 };
+
+CourseContainer.propTypes = {
+  courses: PropTypes.any,
+  authors: PropTypes.any
+};
+
+export default CourseContainer;
